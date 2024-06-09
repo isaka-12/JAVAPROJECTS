@@ -1,22 +1,19 @@
 package Collections;
-/*This code implements a simple text based library management,
- * done as part of learning java collection framework,
- */
+
 import java.util.*;
+import java.util.logging.Logger;
 
 // Book class for creating and initializing book object
 class Book {
     private String bookTitle;
     private String name;
     private String iSBN;
-    private String sTATE;
 
     // Constructor for book object
-    public Book(String bookTitle, String name, String iSBN, String sTATE) {
+    public Book(String bookTitle, String name, String iSBN) {
         this.bookTitle = bookTitle;
         this.name = name;
         this.iSBN = iSBN;
-        this.sTATE = sTATE;
     }
 
     // Getter methods for making private fields accessible to other classes
@@ -32,19 +29,24 @@ class Book {
         return iSBN;
     }
 
-    public String getSTATE() {
-        return sTATE;
-    }
 
     // Displaying book details by overriding toString
     @Override
     public String toString() {
-        return "Book [Book Title = " + bookTitle + ", Author Name = " + name + ", ISBN = " + iSBN + ", STATE = " + sTATE + "]";
+        return "Book [Book Title = " + bookTitle + ", Author Name = " + name + ", ISBN = " + iSBN  + "]";
+    }
+}
+
+// Custom Exception for Book Not Found
+class BookNotFoundException extends Exception {
+    public BookNotFoundException(String message) {
+        super(message);
     }
 }
 
 // Library class to manage list of book objects
 class Library {
+    private static final Logger logger = Logger.getLogger(Library.class.getName());
     private List<Book> books;
     private HashMap<String, Book> bookMap;
 
@@ -59,10 +61,11 @@ class Library {
         books.add(book);
         bookMap.put(book.getISBN(), book);
         System.out.println("New book added successfully!!! \n" + book);
+        logger.info("Book added: " + book);
     }
 
     // Removing books
-    void removeBook(String iSBN) {
+    void removeBook(String iSBN) throws BookNotFoundException {
         Book bookToRemove = null;
         for (Book book : books) {
             if (book.getISBN().equals(iSBN)) {
@@ -74,15 +77,20 @@ class Library {
             books.remove(bookToRemove);
             bookMap.remove(iSBN);
             System.out.println("Book removed successfully: " + bookToRemove);
+            logger.info("Book removed: " + bookToRemove);
         } else {
-            System.out.println("BOOK NOT FOUND!!!");
+            throw new BookNotFoundException("BOOK NOT FOUND with ISBN: " + iSBN);
         }
     }
 
     // Displaying books
     void displayBooks() {
-        for (Book book : books) {
-            System.out.println(book);
+        if (books.isEmpty()) {
+            System.out.println("No books available in the library.");
+        } else {
+            for (Book book : books) {
+                System.out.println(book);
+            }
         }
     }
 
@@ -90,68 +98,82 @@ class Library {
     public Book findBook(String isbn) {
         return bookMap.get(isbn);
     }
+
+    // Getter for logger
+    public Logger getLogger() {
+        return logger;
+    }
 }
 
 // Text-based interface with the main method
 public class LibraryManagement {
     public static void main(String[] args) {
         Library library = new Library();
-        Scanner myScanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("===========LIBRARY MANAGEMENT SYSTEM=========");
-            System.out.println("Choose services below");
-            System.out.println("1. Add a Book");
-            System.out.println("2. Find a Book");
-            System.out.println("3. List all Books");
-            System.out.println("4. Remove a Book");
-            System.out.println("5. Exit");
+        try (Scanner myScanner = new Scanner(System.in)) {
+            while (true) {
+                System.out.println("");
+                System.out.println("===========LIBRARY MANAGEMENT SYSTEM=========");
+                System.out.println("Choose services below");
+                System.out.println("1. Add a Book");
+                System.out.println("2. Find a Book");
+                System.out.println("3. List all Books");
+                System.out.println("4. Remove a Book");
+                System.out.println("5. Exit");
 
-            System.out.print("\nEnter Option: ");
-            int option = myScanner.nextInt();
-            myScanner.nextLine(); // consume newline
+                System.out.print("\nEnter Option: ");
+                
+                try {
+                    int option = myScanner.nextInt();
+                    myScanner.nextLine(); // consume newline
 
-            switch (option) {
-                case 1:
-                    System.out.print("Enter book title: ");
-                    String bookTitle = myScanner.nextLine();
-                    System.out.print("Enter author name: ");
-                    String name = myScanner.nextLine();
-                    System.out.print("Enter ISBN: ");
-                    String iSBN = myScanner.nextLine();
-                    System.out.print("STATE (Available or not): ");
-                    String sTATE = myScanner.nextLine();
-                    Book book = new Book(bookTitle, name, iSBN, sTATE);
-                    library.addBook(book);
-                    break;
-                case 2:
-                    System.out.print("Enter ISBN to find: ");
-                    String searchISBN = myScanner.nextLine();
-                    Book foundBook = library.findBook(searchISBN);
-                    if (foundBook != null) {
-                        System.out.println("Book found: " + foundBook);
-                    } else {
-                        System.out.println("BOOK NOT FOUND!!!");
+                    try {
+                        switch (option) {
+                            case 1:
+                                System.out.print("Enter book title: ");
+                                String bookTitle = myScanner.nextLine();
+                                System.out.print("Enter author name: ");
+                                String name = myScanner.nextLine();
+                                System.out.print("Enter ISBN: ");
+                                String iSBN = myScanner.nextLine();
+                                Book book = new Book(bookTitle, name, iSBN);
+                                library.addBook(book);
+                                break;
+                            case 2:
+                                System.out.print("Enter ISBN to find: ");
+                                String searchISBN = myScanner.nextLine();
+                                Book foundBook = library.findBook(searchISBN);
+                                if (foundBook != null) {
+                                    System.out.println("Book found: " + foundBook);
+                                } else {
+                                    throw new BookNotFoundException("BOOK NOT FOUND with ISBN: " + searchISBN);
+                                }
+                                break;
+                            case 3:
+                                System.out.println("Listing all books:");
+                                library.displayBooks();
+                                break;
+                            case 4:
+                                System.out.print("Enter ISBN to remove: ");
+                                String removeISBN = myScanner.nextLine();
+                                library.removeBook(removeISBN);
+                                break;
+                            case 5:
+                                System.out.println("Exiting...thanks for choosing our services");
+                                return;
+                            default:
+                                System.out.println("Invalid option! Please choose again.");
+                                break;
+                        }
+                    } catch (BookNotFoundException e) {
+                        System.out.println(e.getMessage());
+                        library.getLogger().severe(e.getMessage());
                     }
-                    break;
-                case 3:
-                    System.out.println("Listing all books:");
-                    library.displayBooks();
-                    break;
-                case 4:
-                    System.out.print("Enter ISBN to remove: ");
-                    String removeISBN = myScanner.nextLine();
-                    library.removeBook(removeISBN);
-                    break;
-                case 5:
-                    System.out.println("Exiting...thanks for choosing our services");
-                    myScanner.close();
-                    return;
-                default:
-                    System.out.println("Invalid option! Please choose again.");
-                    break;
+                } catch (InputMismatchException e) {
+                    System.out.println("Invalid input! Please enter a number.");
+                    myScanner.nextLine(); // clear the invalid input
+                }
             }
         }
     }
 }
-// © 2024 isamttechs. All rights reserved.
