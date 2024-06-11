@@ -1,4 +1,4 @@
-package Collections;
+package JAVAPROJECTS;
 
 import java.util.*;
 import java.util.logging.Logger;
