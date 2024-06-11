@@ -25,7 +25,7 @@ This repository is a collection of Java projects and exercises that demonstrate 
 ### Simple Calculator
 - **Description**: A command-line calculator that performs basic arithmetic operations.
 - **Concepts**: Input handling, basic arithmetic, control structures.
-- **Code**: [SimpleCalculator.java](path/to/SimpleCalculator.java)
+- **Code**: [SimpleCalculator.java](SimpleCalculator.java)
 
 ### Simple Banking
 - **Description**: A basic banking application that allows users to manage multiple accounts. Features include creating, deleting, and displaying account details.
