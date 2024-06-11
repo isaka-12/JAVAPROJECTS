@@ -1,7 +1,3 @@
-Got it! Here's the updated README with the correct URL for your project:
-
----
-
 # JAVA PROJECTS
 
 > A collection of Java projects and exercises showcasing my learning progress on various concepts.
