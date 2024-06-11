@@ -30,17 +30,17 @@ This repository is a collection of Java projects and exercises that demonstrate 
 ### Simple Banking
 - **Description**: A basic banking application that allows users to manage multiple accounts. Features include creating, deleting, and displaying account details.
 - **Concepts**: Object-oriented programming, collections, control structures.
-- **Code**: [SimpleBanking/](path/to/SimpleBanking/)
+- **Code**: [SimpleBanking/](path/to/SimpleBanking.java)
 
 ### Employee App
 - **Description**: An application to manage employee records, including adding, updating, and deleting employee details.
 - **Concepts**: Object-oriented programming, collections.
-- **Code**: [EmployeeApp/](path/to/EmployeeApp/)
+- **Code**: [EmployeeApp/](path/to/EmployeeApp.java)
 
 ### Library Management
 - **Description**: A library management system that handles book inventory, borrowing, and returning of books.
 - **Concepts**: Object-oriented programming, collections.
-- **Code**: [LibraryManagement/](path/to/LibraryManagement/)
+- **Code**: [LibraryManagement/](path/to/LibraryManagement.java)
 
 ## Installation
 
