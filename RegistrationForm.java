@@ -1,4 +1,4 @@
-package RegistrationAPP.src.AssignmentApplet;
+package JAVAPROJECTS;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
