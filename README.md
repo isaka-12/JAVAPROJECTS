@@ -10,6 +10,7 @@
   - [Simple Banking](#simple-banking)
   - [Employee App](#employee-app)
   - [Library Management](#library-management)
+  - [Registration Form](#Registrationform)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -18,7 +19,7 @@
 
 ## Introduction
 
-This repository is a collection of Java projects and exercises that demonstrate my learning progress in Java programming. Each project focuses on different concepts, from basic arithmetic operations to managing data for banking, employees, and library systems.
+This repository is a collection of Java projects and exercises that demonstrate my learning progress in Java programming. Each project focuses on different concepts, from basic arithmetic operations to managing data for banking, employees,library systems and simple registration form with java swing GUI.
 
 ## Projects and Concepts
 
@@ -41,6 +42,11 @@ This repository is a collection of Java projects and exercises that demonstrate 
 - **Description**: A library management system that handles book inventory, borrowing, and returning of books.
 - **Concepts**: Object-oriented programming, collections.
 - **Code**: [LibraryManagement.java](LibraryManagement.java)
+
+### Registration Form
+- **Description**: A basic registration form that allow a user to add information and save the information into the textfile.
+- **Concepts**: Object-oriented programming, collections, java swing GUI, file handling and error handling.
+- **Code**: [RegistrationForm.java]RegistrationForm.java)
 
 ## Installation
 
