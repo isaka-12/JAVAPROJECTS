@@ -10,7 +10,7 @@
   - [Simple Banking](#simple-banking)
   - [Employee App](#employee-app)
   - [Library Management](#library-management)
-  - [Registration Form](#Registrationform)
+  - [Registration Form](#Registration-form)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
