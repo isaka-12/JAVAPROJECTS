@@ -46,7 +46,7 @@ This repository is a collection of Java projects and exercises that demonstrate 
 ### Registration Form
 - **Description**: A basic registration form that allow a user to add information and save the information into the textfile.
 - **Concepts**: Object-oriented programming, collections, java swing GUI, file handling and error handling.
-- **Code**: [RegistrationForm.java]RegistrationForm.java)
+- **Code**: [RegistrationForm.java](RegistrationForm.java)
 
 ## Installation
 
