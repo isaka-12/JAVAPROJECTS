@@ -6,6 +6,7 @@
 
 - [Introduction](#introduction)
 - [Projects and Concepts](#projects-and-concepts)
+  - [Simple Vending Machine](#simple-vending-machine)
   - [Simple Calculator](#simple-calculator)
   - [Simple Banking](#simple-banking)
   - [Employee App](#employee-app)
@@ -23,9 +24,14 @@ This repository is a collection of Java projects and exercises that demonstrate 
 
 ## Projects and Concepts
 
+### Simple Vending Machine
+- **Description**: A command-line vending machine model that counts number of items sold per each item .
+- **Concepts**: Loop, basic arithmetic, control structures.
+- **Code**: [SimpleVedingMachine.java](SimpleVendingMachine.java)
+
 ### Simple Calculator
 - **Description**: A command-line calculator that performs basic arithmetic operations.
-- **Concepts**: Input handling, basic arithmetic, control structures.
+- **Concepts**: Input handling, basic arithmetic, control structures and basic java swing GUI.
 - **Code**: [SimpleCalculator.java](SimpleCalculator.java)
 
 ### Simple Banking
